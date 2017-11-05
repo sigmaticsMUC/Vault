@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c53127a9-e5ff-4f73-b564-f8ced71b31bb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vault/core/SecretConverter.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vault/core/VaultController.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vault/utils/Command.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vault/utils/CommandReader.scala" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vault/core/Reference.scala" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vault/core/Box.scala" afterPath="$PROJECT_DIR$/src/vault/core/Box.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vault/core/Controller.scala" afterPath="$PROJECT_DIR$/src/vault/core/Controller.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vault/core/Secret.scala" afterPath="$PROJECT_DIR$/src/vault/core/Secret.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vault/core/Vault.scala" afterPath="$PROJECT_DIR$/src/vault/core/Vault.scala" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -513,7 +504,7 @@
       <updated>1509809285538</updated>
       <workItem from="1509809290132" duration="837000" />
       <workItem from="1509810146015" duration="2581000" />
-      <workItem from="1509879819575" duration="6358000" />
+      <workItem from="1509879819575" duration="6396000" />
     </task>
     <task id="LOCAL-00001" summary="initial setup">
       <created>1509812703620</created>
@@ -522,11 +513,18 @@
       <option name="project" value="LOCAL" />
       <updated>1509812703620</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="initial setup">
+      <created>1509886214851</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1509886214851</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9776000" />
+    <option name="totallyTimeSpent" value="9814000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1447" y="-4" width="1215" height="1028" extended-state="6" />
