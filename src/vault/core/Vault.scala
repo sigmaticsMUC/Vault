@@ -5,10 +5,9 @@ import scala.collection.mutable
 /**
   * Created by alex on 04.11.17.
   */
-class Vault() {
+class Vault(val name: String, val vaultKey: String) {
 
 
-  private val vaultKey = ""
   private var isAuthorized = false
   private val secrets : mutable.HashMap[String, Secret] = mutable.HashMap()
 
@@ -25,7 +24,6 @@ class Vault() {
     None
   }
 
-
   def authorize(key: String) : Boolean = {
     if(vaultKey.equals(key)) {
       isAuthorized = true
@@ -33,4 +31,10 @@ class Vault() {
     }
     false
   }
+
+  def closeVault() : Unit = {
+    isAuthorized = false
+  }
+
+  def isOpen : Boolean = isAuthorized
 }
