@@ -3,12 +3,12 @@ package vault.core
 /**
   * Created by alex on 04.11.17.
   */
-class Box(val index: Int, val content: Array[Byte]) {
+class Box(val index: Int, val content: Byte) {
 
 
   def getIndex : Int = index
 
-  def getContent : Array[Byte] = content
+  def getContent : Byte = content
 
-  override def toString: String = index + "" + content.length
+  override def toString: String = index + "" + content
 }

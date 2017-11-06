@@ -7,8 +7,12 @@ import scala.collection.mutable.ListBuffer
   */
 class Secret(val key: String) {
 
-  private val boxes : ListBuffer[Secret] = new ListBuffer[Secret]
+  private val boxes : ListBuffer[Box] = new ListBuffer[Box]
 
-  def getBoxes : ListBuffer[Secret] = boxes
+  def getBoxes : ListBuffer[Box] = boxes
+
+  def addBox(box: Box) : Unit = {
+    boxes.append(box)
+  }
 
 }

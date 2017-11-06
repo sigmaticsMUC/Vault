@@ -1,5 +1,7 @@
 package vault.core
 
+import vault.factory.SecretFactory
+
 import scala.collection.mutable
 
 /**
@@ -37,6 +39,25 @@ object VaultController {
       }
     }
     false
+  }
+
+  def storeSecret(name: String, pathToSecret: String, secretKey: String) : Unit = {
+    val vaultOption = vaults.get(name)
+    if(vaultOption.isDefined) {
+      val vault = vaultOption.get
+      if(vault.isOpen) {
+        val secret : Option[Secret] = SecretFactory.createSecret(pathToSecret, secretKey)
+        if(secret.isDefined) {
+          vault.addSecret(secretKey, secret.get)
+        }
+      }
+      else {
+        println("\tCant store secret... Vault closed")
+      }
+    }
+    else {
+      println("\tCant store secret... Vault does not exist")
+    }
   }
 
   def getVaultStatus : String = {
