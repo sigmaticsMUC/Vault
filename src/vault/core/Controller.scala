@@ -54,9 +54,10 @@ object Controller {
 
   def storeSecret(args: Array[String]) : Unit = {
     val vaultName : String = args(0)
-    val pathToSecret : String = args(1)
-    val secretKey : String = args(2)
-    VaultController.storeSecret(vaultName, pathToSecret, secretKey)
+    val secretName : String = args(1)
+    val pathToSecret : String = args(2)
+    val secretKey : String = args(3)
+    VaultController.storeSecret(vaultName, pathToSecret, secretKey, secretName)
   }
 
   def readSecret(args: Array[String]) : Unit = {

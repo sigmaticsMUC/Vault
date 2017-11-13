@@ -1,5 +1,7 @@
 package vault.core
 
+import java.io.File
+
 import vault.factory.SecretFactory
 
 import scala.collection.mutable
@@ -14,10 +16,16 @@ object VaultController {
 
   def addNewVault(name: String, key: String) : Unit = {
     vaults.put(name, new Vault(name, key))
+    val dir : File = new File("./res/"+name)
+    dir.mkdir()
+    println(dir.getAbsolutePath)
   }
 
   def addNewVault(vault: Vault) : Unit = {
     vaults.put(vault.name, vault)
+    val dir : File = new File("./res/"+vault.name)
+    dir.mkdir()
+    println(dir.getAbsolutePath)
   }
 
   def closeVault(name: String) : Unit = {
@@ -41,12 +49,12 @@ object VaultController {
     false
   }
 
-  def storeSecret(name: String, pathToSecret: String, secretKey: String) : Unit = {
+  def storeSecret(name: String, pathToSecret: String, secretKey: String, secretName: String) : Unit = {
     val vaultOption = vaults.get(name)
     if(vaultOption.isDefined) {
       val vault = vaultOption.get
       if(vault.isOpen) {
-        val secret : Option[Secret] = SecretFactory.createSecret(pathToSecret, secretKey)
+        val secret : Option[Secret] = SecretFactory.createSecret(name, pathToSecret, secretKey, secretName)
         if(secret.isDefined) {
           vault.addSecret(secretKey, secret.get)
         }
