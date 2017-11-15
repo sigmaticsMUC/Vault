@@ -12,6 +12,8 @@ import scala.collection.mutable.ListBuffer
   */
 object SecretFactory {
 
+  private val boxLength = 1000
+
   def createSecret(vaultName: String, path: String, key: String, name: String) : Option[Secret] = {
     if(Files.exists(Paths.get(path))) {
       //val file : File = new File(path)
@@ -38,12 +40,11 @@ object SecretFactory {
   }
 
   private def createBoxes(path: String) : ListBuffer[Box] = {
-    val boxes : ListBuffer[Box] = ListBuffer()
-    val byteArray = Files.readAllBytes(Paths.get(path))
-    for(index <- 0 to byteArray.length - 1) {
-      boxes.append(new Box(index, byteArray(index)))
-    }
+    val boxList : java.util.List[Box] = BoxFactory.createBoxes(path)
+    var boxes : ListBuffer[Box] =
+      ListBuffer.empty ++= scala.collection.JavaConverters.asScalaBuffer(boxList)
     util.Random.shuffle(boxes)
+
   }
 
 }
