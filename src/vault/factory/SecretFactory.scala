@@ -39,12 +39,23 @@ object SecretFactory {
     }
   }
 
+  def createFile(secret: Secret, path: String) : Unit = {
+    val file : File = new File(path)
+    val writer : FileOutputStream = new FileOutputStream(file)
+    for(box <- secret.getBoxes.sortBy(b => b.index)) {
+      writer.write(box.content)
+      writer.flush()
+    }
+    writer.close()
+  }
+
   private def createBoxes(path: String) : ListBuffer[Box] = {
     val boxList : java.util.List[Box] = BoxFactory.createBoxes(path)
     var boxes : ListBuffer[Box] =
       ListBuffer.empty ++= scala.collection.JavaConverters.asScalaBuffer(boxList)
     util.Random.shuffle(boxes)
-
   }
+
+
 
 }

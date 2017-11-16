@@ -68,6 +68,28 @@ object VaultController {
     }
   }
 
+  def readSecret(name: String, pathDestination: String, secretKey: String, secretName: String) : Unit = {
+    val vaultOption = vaults.get(name)
+    if(vaultOption.isDefined) {
+      val vault = vaultOption.get
+      if(vault.isOpen) {
+        val secretOption = vault.getSecret(secretKey, secretName)
+        if(secretOption.isDefined) {
+          SecretFactory.createFile(secretOption.get, pathDestination)
+        }
+        else {
+          println("\tCant access secret... ")
+        }
+      }
+      else {
+        println("\tCant read secret... Vault closed")
+      }
+    }
+    else {
+      println("\tCant read secret... Vault does not exist")
+    }
+  }
+
   def getVaultStatus : String = {
     var numVault : Int = vaults.size
     var str: String = ""

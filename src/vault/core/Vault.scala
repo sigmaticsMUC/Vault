@@ -7,7 +7,6 @@ import scala.collection.mutable
   */
 class Vault(val name: String, val vaultKey: String) {
 
-
   private var isAuthorized = false
   private val secrets : mutable.HashMap[String, Secret] = mutable.HashMap()
 
@@ -17,9 +16,14 @@ class Vault(val name: String, val vaultKey: String) {
     }
   }
 
-  def getSecret(key: String) : Option[Secret] = {
+  def getSecret(key: String, name: String) : Option[Secret] = {
     if (secrets != null & isAuthorized) {
-    secrets.get(key)
+      val secretOption = secrets.get(key)
+      if(secretOption.isDefined) {
+        if(secretOption.get.name.equals(name)) {
+          return secretOption
+        }
+      }
     }
     None
   }

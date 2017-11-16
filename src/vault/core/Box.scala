@@ -5,7 +5,6 @@ package vault.core
   */
 class Box(val index: Int, val content: Array[Byte]) extends Serializable{
 
-
   def getIndex : Int = index
 
   def getContent : Array[Byte] = content

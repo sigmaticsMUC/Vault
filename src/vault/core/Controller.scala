@@ -31,37 +31,51 @@ object Controller {
   }
 
   def createVault(args: Array[String]) : Unit = {
-    val name : String = args(0)
-    val password: String = args(1)
-    val vault : Vault = new Vault(name, password)
-    vault.authorize(password)
-    //VaultController.addNewVault(name, password)
-    VaultController.addNewVault(vault)
+    if (checkInputNumber(args, 2)) {
+      val name: String = args(0)
+      val password: String = args(1)
+      val vault: Vault = new Vault(name, password)
+      vault.authorize(password)
+      //VaultController.addNewVault(name, password)
+      VaultController.addNewVault(vault)
+    }
   }
 
   def openVault(args: Array[String]) : Unit = {
-    val name : String = args(0)
-    val password: String = args(1)
-    if(!VaultController.openVault(name, password)) {
-      Console.err.println("\tAccess to vault denied! Check password or name\n")
+    if (checkInputNumber(args, 2)) {
+      val name: String = args(0)
+      val password: String = args(1)
+      if (!VaultController.openVault(name, password)) {
+        Console.err.println("\tAccess to vault denied! Check password or name\n")
+      }
     }
   }
 
   def closeVault(args: Array[String]) : Unit = {
-    val name : String = args(0)
-    VaultController.closeVault(name)
+    if (checkInputNumber(args, 1)) {
+      val name: String = args(0)
+      VaultController.closeVault(name)
+    }
   }
 
   def storeSecret(args: Array[String]) : Unit = {
-    val vaultName : String = args(0)
-    val secretName : String = args(1)
-    val pathToSecret : String = args(2)
-    val secretKey : String = args(3)
-    VaultController.storeSecret(vaultName, pathToSecret, secretKey, secretName)
+    if (checkInputNumber(args, 4)) {
+      val vaultName: String = args(0)
+      val secretName: String = args(1)
+      val pathToSecret: String = args(2)
+      val secretKey: String = args(3)
+      VaultController.storeSecret(vaultName, pathToSecret, secretKey, secretName)
+    }
   }
 
   def readSecret(args: Array[String]) : Unit = {
-
+    if (checkInputNumber(args, 4)) {
+      val vaultName: String = args(0)
+      val secretName: String = args(1)
+      val secretKey: String = args(2)
+      val pathDestination: String = args(3)
+      VaultController.readSecret(vaultName, pathDestination, secretKey, secretName)
+    }
   }
 
   def status() : Unit = {
@@ -75,6 +89,14 @@ object Controller {
 
   def invalid() : Unit = {
     Console.err.println("\n\tInvalid command boi!\n")
+  }
+
+  def checkInputNumber(args: Array[String], expected: Int) : Boolean = {
+    if(args.length != expected) {
+      println("Boi you talk to much... Please provide correct number of input!")
+      return false
+    }
+    return true
   }
 
 }

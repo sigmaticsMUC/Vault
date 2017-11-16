@@ -47,6 +47,5 @@ public class BoxFactory {
         catch (IOException ex) {
             return null;
         }
-
     }
 }

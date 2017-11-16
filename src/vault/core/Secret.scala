@@ -13,6 +13,7 @@ class Secret(val key: String, val name: String) {
 
   def getName : String = name
 
+
   def addBox(box: Box) : Unit = {
     boxes.append(box)
   }
